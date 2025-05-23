@@ -116,7 +116,7 @@ openBtn.addEventListener('click', () => {
 // =======================
 (() => {
   const hero = document.querySelector('.hero');
-  let baseOffset = 0;
+  let baseOffset = -100;
   let currentOffset = baseOffset;
   let targetOffset = baseOffset;
   let maxBlur = 5;
