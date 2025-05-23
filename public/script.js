@@ -184,6 +184,11 @@ openBtn.addEventListener('click', () => {
   });
 });
 
+document.body.addEventListener('click', () => {
+  if (bgMusic.paused) bgMusic.play();
+}, { once: true });
+
+
 // =======================
 // 8. Firebase: Inisialisasi dan Setup Firestore
 // =======================
@@ -255,6 +260,11 @@ async function loadComments() {
     console.error("Error memuat komentar:", error);
   }
 }
+
+if (querySnapshot.empty) {
+  commentSection.innerHTML = "<p>Belum ada ucapan. Jadilah yang pertama!</p>";
+}
+
 
 loadComments();
 
