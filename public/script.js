@@ -1,13 +1,12 @@
 // =======================
 // 1. Countdown Timer
 // =======================
-const targetDate = new Date("31 May, 2025 09:00:00").getTime();
+const targetDate = new Date("31 May 2025 09:00:00").getTime();
 const timerElement = document.getElementById("timer");
 
 setInterval(() => {
-  const now = new Date().getTime();
+  const now = Date.now();
   let distance = targetDate - now;
-
   if (distance < 0) distance = 0;
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -38,16 +37,18 @@ setInterval(() => {
 // =======================
 // 2. Modal Galeri Foto
 // =======================
-function openModal(img) {
+export function openModal(img) {
   const modal = document.getElementById("imgModal");
   const modalImg = document.getElementById("modalImg");
-  modal.style.display = "block";
-  modalImg.src = img.src;
+  if (modal && modalImg) {
+    modal.style.display = "block";
+    modalImg.src = img.src;
+  }
 }
 
-function closeModal() {
+export function closeModal() {
   const modal = document.getElementById("imgModal");
-  modal.style.display = "none";
+  if (modal) modal.style.display = "none";
 }
 
 // =======================
@@ -57,8 +58,9 @@ function openInvitation() {
   const hero = document.getElementById("hero");
   const mainContent = document.getElementById("main-content");
 
-  hero.classList.add("fade-out");
+  if (!hero || !mainContent) return;
 
+  hero.classList.add("fade-out");
   setTimeout(() => {
     hero.style.display = "none";
     mainContent.style.display = "block";
@@ -77,7 +79,7 @@ function smoothScrollTo(element, duration = 1000) {
   let startTime = null;
 
   function animation(currentTime) {
-    if (startTime === null) startTime = currentTime;
+    if (!startTime) startTime = currentTime;
     const timeElapsed = currentTime - startTime;
     const run = ease(timeElapsed, startPosition, distance, duration);
     window.scrollTo(0, run);
@@ -86,29 +88,34 @@ function smoothScrollTo(element, duration = 1000) {
 
   function ease(t, b, c, d) {
     t /= d / 2;
-    if (t < 1) return c / 2 * t * t + b;
+    if (t < 1) return (c / 2) * t * t + b;
     t--;
-    return -c / 2 * (t * (t - 2) - 1) + b;
+    return (-c / 2) * (t * (t - 2) - 1) + b;
   }
 
   requestAnimationFrame(animation);
 }
 
 const openBtn = document.getElementById('openBtn');
-openBtn.addEventListener('click', () => {
+openBtn?.addEventListener('click', () => {
   const mainContent = document.getElementById('main-content');
+  if (!mainContent) return;
+
   mainContent.style.display = 'block';
-
   document.body.classList.remove('noscroll');
-
   mainContent.scrollIntoView({ behavior: 'smooth' });
-  openBtn.classList.add('hide');
 
+  openBtn.classList.add('hide');
   setTimeout(() => {
     openBtn.style.display = 'none';
   }, 1000);
 
   smoothScrollTo(mainContent, 1000);
+
+  // Putar musik saat buka undangan
+  bgMusic.play().catch(() => {
+    console.log("Autoplay ditolak, musik akan mulai setelah interaksi berikutnya.");
+  });
 });
 
 // =======================
@@ -116,13 +123,15 @@ openBtn.addEventListener('click', () => {
 // =======================
 (() => {
   const hero = document.querySelector('.hero');
-  let baseOffset = 0;
-  let currentOffset = baseOffset;
-  let targetOffset = baseOffset;
-  let maxBlur = 5;
-  let currentBlur = 0;
-  let targetBlur = 0;
-  let ticking = false;
+  if (!hero) return;
+
+  let baseOffset = 0,
+      currentOffset = baseOffset,
+      targetOffset = baseOffset,
+      maxBlur = 5,
+      currentBlur = 0,
+      targetBlur = 0,
+      ticking = false;
 
   function lerp(start, end, t) {
     return start + (end - start) * t;
@@ -154,9 +163,7 @@ openBtn.addEventListener('click', () => {
     }
   }
 
-  document.addEventListener('scroll', () => {
-    onScroll();
-  });
+  document.addEventListener('scroll', onScroll);
 })();
 
 // =======================
@@ -176,17 +183,7 @@ const observer = new IntersectionObserver(entries => {
 animateEls.forEach(el => observer.observe(el));
 
 // =======================
-// 7. Putar Musik Background Saat Tombol Buka Undangan Diklik
-// =======================
-const bgMusic = document.getElementById('bg-music');
-openBtn.addEventListener('click', () => {
-  bgMusic.play().catch(() => {
-    console.log("Autoplay ditolak. Musik akan mulai setelah interaksi berikutnya.");
-  });
-});
-
-// =======================
-// 8. Firebase: Inisialisasi dan Setup Firestore
+// 7. Firebase: Inisialisasi dan Setup Firestore
 // =======================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -195,30 +192,34 @@ const firebaseConfig = {
   apiKey: "AIzaSyD_pcQQfzF_0khbjwpG_IxTqpdVrXysWSc",
   authDomain: "rayarofiqwedding.firebaseapp.com",
   projectId: "rayarofiqwedding",
-  storageBucket: "rayarofiqwedding.firebasestorage.app",
+  storageBucket: "rayarofiqwedding.appspot.com",
   messagingSenderId: "168418586866",
   appId: "1:168418586866:web:632af302bd422bdbd8e06b",
   measurementId: "G-WBTPMHRG1C"
-
 };
-
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // =======================
-// 9. Form RSVP: Submit & Load Comments
+// 8. Form RSVP: Submit & Load Comments
 // =======================
 const form = document.getElementById("rsvp-form");
 const commentSection = document.getElementById("comment-section");
 
-form.addEventListener("submit", async (e) => {
+form?.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const name = document.getElementById("guest-name").value.trim();
-  const message = document.getElementById("guest-message").value.trim();
-  const attendance = document.getElementById("guest-attendance").value;
 
-  if (name && message && attendance) {
+  const name = document.getElementById("guest-name")?.value.trim();
+  const message = document.getElementById("guest-message")?.value.trim();
+  const attendance = document.getElementById("guest-attendance")?.value;
+
+  if (!name || !message || !attendance) {
+    alert("Mohon isi semua kolom RSVP dengan benar.");
+    return;
+  }
+
+  try {
     await addDoc(collection(db, "comments"), {
       name,
       message,
@@ -226,17 +227,22 @@ form.addEventListener("submit", async (e) => {
       timestamp: serverTimestamp()
     });
     form.reset();
-    loadComments();
+    await loadComments();
+  } catch (error) {
+    console.error("Gagal mengirim komentar:", error);
   }
 });
 
 async function loadComments() {
-  commentSection.innerHTML = "";
+  if (!commentSection) return;
+  commentSection.innerHTML = "Memuat komentar...";
+
   const q = query(collection(db, "comments"), orderBy("timestamp", "desc"));
 
   try {
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
+    commentSection.innerHTML = "";
+    querySnapshot.forEach(doc => {
       const data = doc.data();
       const time = data.timestamp ? new Date(data.timestamp.seconds * 1000) : new Date();
       const formattedTime = time.toLocaleString('id-ID');
@@ -253,68 +259,17 @@ async function loadComments() {
       commentSection.appendChild(div);
     });
   } catch (error) {
+    commentSection.innerHTML = "Gagal memuat komentar.";
     console.error("Error memuat komentar:", error);
   }
 }
 
+// Load comments saat awal halaman dibuka
 loadComments();
 
 // =======================
-// 10. Toggle dan Salin Info Rekening Hadiah
+// 9. Toggle dan Salin Info Rekening Hadiah
 // =======================
 const toggleGiftBtn = document.getElementById("toggleGiftBtn");
 const giftDetails = document.getElementById("giftDetails");
-const copyBtn = document.getElementById('copyBtn');
-const toast = document.getElementById('toast');
-
-toggleGiftBtn.addEventListener("click", () => {
-  giftDetails.style.display = giftDetails.style.display === "block" ? "none" : "block";
-});
-
-function showToast() {
-  toast.classList.add("show");
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2500);
-}
-
-function copyText(text) {
-  if (navigator.clipboard) {
-    return navigator.clipboard.writeText(text);
-  } else {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-      document.execCommand('copy');
-    } catch (err) {
-      console.error('Fallback: Gagal menyalin teks', err);
-    }
-    document.body.removeChild(textarea);
-    return Promise.resolve();
-  }
-}
-
-copyBtn.onclick = () => {
-  const rekeningText = document.getElementById('rekening-number').childNodes[0].nodeValue.trim();
-  copyText(rekeningText).then(() => {
-    showToast();
-  });
-};
-
-// Munculkan animasi saat scroll
-const animateOnScroll = () => {
-  const elements = document.querySelectorAll('[data-animate]');
-  const triggerBottom = window.innerHeight * 0.85;
-
-  elements.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < triggerBottom) {
-      el.classList.add('animated');
-    }
-  });
-};
-
-window.addEventListener('scroll', animateOnScroll);
-window.addEventListener('load', animateOnScroll);
+const copyBtn = document.getElementBy
