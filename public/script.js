@@ -318,21 +318,18 @@ const animateOnScroll = () => {
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
 
-// script.js
-
 window.addEventListener('DOMContentLoaded', () => {
   const guestNameElement = document.querySelector('.guest-name');
   if (!guestNameElement) return;
 
-  // Ambil parameter 'nama' dari URL
   const urlParams = new URLSearchParams(window.location.search);
   const namaTamu = urlParams.get('nama');
 
   if (namaTamu) {
-    // Ubah teks nama tamu
     guestNameElement.textContent = decodeURIComponent(namaTamu);
   }
 });
+
 
 
 
