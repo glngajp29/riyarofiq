@@ -317,3 +317,24 @@ const animateOnScroll = () => {
 
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
+
+// Fungsi ambil parameter dari URL
+function getParameterByName(name) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(name);
+}
+
+// Fungsi set nama tamu ke elemen
+function setGuestName() {
+  const guestName = getParameterByName('nama');
+  if (guestName) {
+    const guestNameEl = document.querySelector('.guest-name');
+    if (guestNameEl) {
+      guestNameEl.textContent = guestName;
+    }
+  }
+}
+
+// Jalankan saat halaman sudah dimuat
+window.addEventListener('DOMContentLoaded', setGuestName);
+
