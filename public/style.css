@@ -15,11 +15,11 @@ body {
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
-  /* A56 5G specific optimizations */
-  font-size: 16px;
+  font-size: 16px; /* Base font size */
   min-height: 100vh;
 }
 
+/* Font Faces */
 @font-face {
   font-family: 'Bird of Feather';
   src: url('Birds of Paradise.ttf') format('truetype');
@@ -44,14 +44,11 @@ body {
   font-display: swap;
 }
 
-/* --------------------------------------------- */
-/* Hero Section - A56 5G Portrait Optimized */
+/* Hero Section */
 .hero {
   height: 100vh;
-  height: 100dvh; /* Dynamic viewport height for A56 5G */
   background: url('foto-cincin.jpg') center center / cover no-repeat;
   position: relative;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,21 +68,18 @@ body {
   text-align: center;
   padding: 0 24px;
   color: #fff;
-  width: 100%;
   max-width: 400px; /* Optimal for A56 5G width */
 }
 
+/* Text Styles */
 .line-wedding {
-  font-family: 'Playfair Display', serif;
   font-size: 18px; /* Optimized for A56 5G */
-  font-style: italic;
   margin-bottom: 24px;
   opacity: 0.95;
   letter-spacing: 0.5px;
 }
 
 .line-couple {
-  font-family: 'Bird of Feather', cursive;
   font-size: 64px; /* Perfect size for A56 5G screen */
   margin: 32px 0;
   line-height: 0.8;
@@ -93,15 +87,13 @@ body {
 }
 
 .line-date {
-  font-family: 'Playfair Display', serif;
   font-size: 18px;
   margin-top: 24px;
   opacity: 0.95;
   letter-spacing: 0.5px;
 }
 
-/* --------------------------------------------- */
-/* Invitation Overlay - A56 5G Optimized */
+/* Invitation Overlay */
 .invitation {
   position: absolute;
   inset: 0;
@@ -117,35 +109,13 @@ body {
 }
 
 .invitation .line {
-  font-family: 'Playfair Display', serif;
   font-size: 16px;
   margin-bottom: 16px;
   line-height: 1.6;
   max-width: 350px;
 }
 
-.line-guest-title,
-.line-guest-name {
-  font-size: 20px;
-  color: #ffd1dc;
-}
-
-.line-guest-name {
-  font-weight: 700;
-  margin-bottom: 24px;
-  letter-spacing: 1px;
-}
-
-.line-place {
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
-  color: #ffd1dc;
-  margin-bottom: 48px;
-  max-width: 320px;
-}
-
-/* --------------------------------------------- */
-/* A56 5G Optimized Buttons */
+/* Buttons */
 .btn, .open-btn {
   font-family: 'Korcy', sans-serif;
   font-size: 16px;
@@ -159,43 +129,26 @@ body {
   transition: all 0.3s ease;
   text-align: center;
   display: inline-block;
-  text-decoration: none;
   min-height: 56px; /* A56 5G touch target */
-  min-width: 160px;
-  touch-action: manipulation;
   box-shadow: 0 4px 15px rgba(155, 110, 108, 0.3);
-  -webkit-tap-highlight-color: transparent;
 }
 
-.btn:hover, .open-btn:hover,
-.btn:active, .open-btn:active {
+.btn:hover, .open-btn:hover {
   background: #a17257;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(155, 110, 108, 0.4);
 }
 
-.open-btn {
-  margin-top: 32px;
-  font-size: 18px;
-  padding: 20px 40px;
-  min-height: 60px;
-}
-
-/* --------------------------------------------- */
-/* Sections - A56 5G Layout */
+/* Sections */
 .section {
   padding: 72px 24px;
   text-align: center;
   background: #fff;
-  position: relative;
 }
 
-/* --------------------------------------------- */
-/* Countdown Section - A56 5G Optimized */
+/* Countdown Section */
 #countdown {
   position: relative;
   min-height: 100vh;
-  min-height: 100dvh;
   background: url('foto-berdua.jpg') center center/cover no-repeat;
   color: #fff;
   display: flex;
@@ -203,8 +156,6 @@ body {
   justify-content: center;
   align-items: center;
   padding: 72px 24px;
-  text-align: center;
-  background-attachment: fixed;
 }
 
 #countdown::before {
@@ -215,11 +166,6 @@ body {
   z-index: 1;
 }
 
-#countdown > * {
-  position: relative;
-  z-index: 2;
-}
-
 #countdown h2 {
   font-family: 'Korcy', sans-serif;
   font-size: 32px; /* Optimized for A56 5G */
@@ -227,44 +173,7 @@ body {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-#timer {
-  font-family: 'Korcy', sans-serif;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  width: 100%;
-  max-width: 360px; /* Perfect for A56 5G */
-  margin-top: 24px;
-}
-
-.time-box {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 20px 12px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  min-height: 80px;
-}
-
-.time-box .number {
-  font-size: 28px; /* Optimized for A56 5G readability */
-  font-weight: 600;
-  display: block;
-  line-height: 1;
-}
-
-.time-box .label {
-  font-size: 12px;
-  font-weight: 300;
-  margin-top: 6px;
-  opacity: 0.9;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* --------------------------------------------- */
-/* Quote Section - A56 5G Optimized */
+/* Quote Section */
 .quote-section {
   position: relative;
   background: url('bg-quotes.jpg') center center / cover no-repeat;
@@ -275,523 +184,16 @@ body {
   text-align: center;
   padding: 96px 32px;
   color: #fff;
-  background-attachment: fixed;
-}
-
-.quote-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(75, 0, 0, 0.5);
-  z-index: 1;
-}
-
-.quote-content {
-  position: relative;
-  z-index: 2;
-  max-width: 340px; /* Optimized for A56 5G */
 }
 
 .quote-content blockquote {
   font-size: 20px; /* Perfect readability for A56 5G */
-  font-style: italic;
   line-height: 1.5;
   margin-bottom: 32px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-.quote-author {
-  font-size: 16px;
-  font-weight: 300;
-  opacity: 0.9;
-}
-
-/* --------------------------------------------- */
-/* Couple Section - A56 5G Optimized */
-.couple-section {
-  padding: 96px 24px;
-  background: #fff0f5;
-  text-align: center;
-}
-
-.section-intro {
-  font-size: 16px;
-  color: #444;
-  margin-bottom: 72px;
-  line-height: 1.6;
-  padding: 0 16px;
-  max-width: 350px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.couple-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 96px;
-  max-width: 100%;
-}
-
-.couple-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  width: 100%;
-}
-
-.couple-photo {
-  width: 240px; /* Optimized for A56 5G screen */
-  height: 288px;
-  border-radius: 50% 50% 0 0;
-  object-fit: cover;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 4px solid #fff;
-}
-
-.fancy-font {
-  font-family: 'Bird of Feather', cursive;
-  font-size: 56px; /* Perfect size for A56 5G */
-  margin: 24px 0 12px;
-  line-height: 0.9;
-}
-
-.couple-name {
-  font-family: 'Korcy', cursive;
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  letter-spacing: 0.5px;
-}
-
-.couple-parent {
-  font-size: 14px;
-  color: #666;
-  padding: 0 24px;
-  line-height: 1.4;
-  max-width: 300px;
-}
-
-.bride .fancy-font,
-.bride .couple-name {
-  color: #8f4761;
-}
-
-.groom .fancy-font,
-.groom .couple-name {
-  color: #a17257;
-}
-
-/* --------------------------------------------- */
-/* Event Information - A56 5G Optimized */
-.seamless-section {
-  background: #9b6e6c;
-  padding: 72px 24px;
-  margin: 0;
-  color: #fff;
-}
-
-.acara-bg {
-  background: #fff0f5;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  padding: 48px 28px;
-  color: #333;
-  max-width: 380px;
-  margin: 0 auto;
-}
-
-.judul-acara-1,
-.judul-acara-2 {
-  font-family: 'Korcy', sans-serif;
-  font-size: 22px; /* Optimized for A56 5G */
-  color: #9b6e6c;
-  margin: 24px 0;
-}
-
-.info-acara {
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
-  color: #444;
-  margin: 10px 0;
-  line-height: 1.5;
-}
-
-.alamat-title {
-  font-family: 'Korcy', sans-serif;
-  font-size: 18px;
-  color: #9b6e6c;
-  margin: 32px 0 12px;
-}
-
-.alamat-acara {
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
-  color: #444;
-  font-weight: 300;
-  line-height: 1.5;
-}
-
-/* A56 5G Button Layouts */
-.button-wrapper,
-.button-wrapper-justify,
-.button-wrapper-inline {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 48px;
-  width: 100%;
-}
-
-.button-wrapper .btn,
-.button-wrapper-justify .btn,
-.button-wrapper-inline .btn {
-  width: 100%;
-  margin: 0;
-  padding: 18px 24px;
-  font-size: 16px;
-  min-height: 56px;
-}
-
-/* Two buttons side by side - A56 5G optimized */
-.button-wrapper-inline {
-  flex-direction: row;
-  gap: 16px;
-}
-
-.button-wrapper-inline .btn {
-  flex: 1;
-  min-width: 0;
-}
-
-/* --------------------------------------------- */
-/* Gallery - A56 5G Grid */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns for A56 5G */
-  gap: 12px;
-  margin-top: 32px;
-  padding: 0 12px;
-}
-
-.gallery img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: 16px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.gallery img:active {
-  transform: scale(0.95);
-}
-
-/* Modal for A56 5G */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  z-index: 1000;
-  padding: 24px;
-  touch-action: manipulation;
-}
-
-.modal-content {
-  display: block;
-  margin: auto;
-  max-width: 95%;
-  max-height: 85vh;
-  border-radius: 12px;
-  object-fit: contain;
-}
-
-.close {
-  position: absolute;
-  top: 32px;
-  right: 32px;
-  font-size: 32px;
-  font-weight: bold;
-  color: #fff;
-  cursor: pointer;
-  z-index: 1001;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.6);
-  border-radius: 50%;
-  touch-action: manipulation;
-}
-
-/* --------------------------------------------- */
-/* RSVP Section - A56 5G Optimized */
-.rsvp-section {
-  padding: 72px 24px;
-  background: #f9f9f9;
-}
-
-.rsvp-title {
-  font-family: 'Korcy', cursive;
-  font-size: 32px; /* Perfect for A56 5G */
-  text-align: center;
-  margin-bottom: 16px;
-  color: #333;
-}
-
-.rsvp-subtitle {
-  text-align: center;
-  font-size: 16px;
-  margin-bottom: 48px;
-  color: #555;
-  line-height: 1.5;
-  max-width: 350px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.rsvp-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 380px;
-  margin: 0 auto;
-}
-
-.rsvp-form input,
-.rsvp-form textarea,
-.rsvp-form select {
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
-  padding: 18px;
-  border-radius: 12px;
-  border: 2px solid #ddd;
-  background: #fff;
-  resize: vertical;
-  -webkit-appearance: none;
-  appearance: none;
-  min-height: 56px; /* A56 5G touch target */
-}
-
-.rsvp-form input:focus,
-.rsvp-form textarea:focus,
-.rsvp-form select:focus {
-  outline: none;
-  border-color: #9b6e6c;
-  box-shadow: 0 0 0 3px rgba(155, 110, 108, 0.1);
-}
-
-.submit-btn {
-  background: #9b6e6c;
-  color: #fff;
-  font-family: 'Korcy', sans-serif;
-  font-weight: bold;
-  border: none;
-  border-radius: 28px;
-  padding: 20px 32px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 24px;
-  font-size: 16px;
-  min-height: 60px;
-  touch-action: manipulation;
-  box-shadow: 0 4px 15px rgba(155, 110, 108, 0.3);
-}
-
-.submit-btn:active {
-  background: #8a5d5b;
-  transform: translateY(1px);
-}
-
-/* Comment Display - A56 5G Optimized */
-.comment-wrapper {
-  max-height: 400px;
-  overflow-y: auto;
-  border-radius: 16px;
-  border: 1px solid #ddd;
-  margin-top: 32px;
-  background: #fff;
-  -webkit-overflow-scrolling: touch;
-}
-
-.comment-card {
-  border-bottom: 1px solid #eee;
-  padding: 24px;
-  background: #fff;
-}
-
-.comment-card:last-child {
-  border-bottom: none;
-}
-
-.comment-name {
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 8px;
-}
-
-.comment-name .attendance {
-  font-style: italic;
-  font-size: 14px;
-  color: #666;
-  margin-left: 6px;
-}
-
-.comment-message {
-  font-size: 15px;
-  color: #444;
-  line-height: 1.5;
-  margin-bottom: 8px;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-.comment-time {
-  font-size: 12px;
-  color: #999;
-}
-
-/* --------------------------------------------- */
-/* Gift Section - A56 5G Optimized */
-.gift-section {
-  background: #fefefe;
-  padding: 72px 24px;
-  text-align: center;
-  border-top: 1px solid #eee;
-}
-
-.gift-title {
-  font-family: 'Korcy', cursive;
-  font-size: 32px;
-  margin-bottom: 16px;
-  color: #333;
-}
-
-.gift-description {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 32px;
-  line-height: 1.5;
-  max-width: 350px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.gift-btn {
-  background: #9b6e6c;
-  font-family: "Korcy", sans-serif;
-  color: white;
-  font-size: 16px;
-  padding: 20px 32px;
-  border-radius: 28px;
-  cursor: pointer;
-  border: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  min-height: 60px;
-  touch-action: manipulation;
-  box-shadow: 0 4px 15px rgba(155, 110, 108, 0.3);
-}
-
-.gift-btn:active {
-  background: #8a5d5b;
-  transform: translateY(1px);
-}
-
-.gift-details {
-  display: none;
-  margin-top: 32px;
-  position: relative;
-  max-width: 360px; /* Optimized for A56 5G */
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.gift-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.mandiri-logo {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 48px; /* Optimized for A56 5G */
-  height: auto;
-  background: rgba(255,255,255,0.9);
-  padding: 6px;
-  border-radius: 8px;
-}
-
-.atm-overlay {
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255,255,255,0.95);
-  padding: 18px 24px;
-  border-radius: 12px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  max-width: 90%;
-}
-
-.rekening-text {
-  font-family: 'Conthrax', monospace;
-  font-size: 20px; /* Optimized for A56 5G */
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 6px;
-}
-
-.rekening-text .nama-rekening {
-  font-family: 'Playfair Display', serif;
-  font-size: 14px;
-  font-weight: normal;
-  color: #555;
-  display: block;
-  margin-top: 6px;
-}
-
-.copy-btn {
-  margin-top: 16px;
-  background: #383838;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s;
-  touch-action: manipulation;
-  min-height: 44px;
-}
-
-.copy-btn:active {
-  background: #2a2a2a;
-  transform: translateY(1px);
-}
-
-.gift-note {
-  font-size: 14px;
-  font-style: italic;
-  color: #777;
-  margin-top: 24px;
-  line-height: 1.4;
-  max-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* --------------------------------------------- */
-/* Footer - A56 5G Optimized */
+/* Footer */
 footer {
   padding: 48px 24px;
   text-align: center;
@@ -800,8 +202,7 @@ footer {
   font-size: 14px;
 }
 
-/* --------------------------------------------- */
-/* Toast Notification - A56 5G */
+/* Toast Notification */
 .toast {
   visibility: hidden;
   background: rgba(0,0,0,0.8);
@@ -825,34 +226,13 @@ footer {
   opacity: 1;
 }
 
-/* --------------------------------------------- */
 /* Utility Classes */
 .noscroll {
   height: 100vh;
-  height: 100dvh;
   overflow: hidden;
 }
 
-.fade-out {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: all 1s ease;
-  pointer-events: none;
-}
-
-[data-animate] {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease;
-}
-
-[data-animate].visible,
-[data-animate].animate-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Segment Dividers - A56 5G */
+/* Segment Dividers */
 .segment-divider-top,
 .segment-divider-bot {
   height: 2px;
@@ -861,45 +241,26 @@ footer {
   border-radius: 2px;
 }
 
-/* --------------------------------------------- */
-/* Animation Keyframes */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 0 16px; /* Reduce padding on smaller screens */
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .line-couple {
+    font-size: 48px; /* Adjust font size for smaller screens */
+  }
+
+  .btn, .open-btn {
+    padding: 16px 24px; /* Adjust button padding */
+  }
+
+  #countdown h2 {
+    font-size: 28px; /* Adjust font size for smaller screens */
   }
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* --------------------------------------------- */
 /* Samsung Galaxy A56 5G Specific Optimizations */
-
-/* High DPI display optimization */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .hero-content,
   .invitation,
@@ -910,39 +271,13 @@ footer {
   }
 }
 
-/* Samsung Internet Browser specific */
-@supports (-webkit-appearance: none) {
-  .btn, .open-btn, .submit-btn, .gift-btn {
-    -webkit-appearance: none;
-  }
-}
-
-/* Performance optimizations for A56 5G */
-.hero,
-#countdown,
-.quote-section {
-  will-change: transform;
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  contain: layout style paint;
-}
-
-/* Touch optimization for Samsung devices */
-* {
-  -webkit-overflow-scrolling: touch;
-  -webkit-tap-highlight-color: rgba(155, 110, 108, 0.2);
-}
-
-/* Prevent zoom on input focus - A56 5G specific */
+/* Prevent zoom on input focus */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 textarea,
 select {
   font-size: 16px !important;
-  -webkit-user-select: auto;
-  user-select: auto;
 }
 
 /* Safe area adjustments for A56 5G notch/camera */
@@ -951,25 +286,5 @@ select {
   .invitation {
     padding-top: max(48px, env(safe-area-inset-top) + 24px);
     padding-bottom: max(48px, env(safe-area-inset-bottom) + 24px);
-  }
-  
-  .toast {
-    bottom: max(32px, env(safe-area-inset-bottom) + 16px);
-  }
-}
-
-/* Samsung One UI dark mode support */
-@media (prefers-color-scheme: dark) {
-  .gift-details .atm-overlay {
-    background: rgba(40, 40, 40, 0.95);
-    color: #fff;
-  }
-  
-  .rekening-text {
-    color: #fff;
-  }
-  
-  .rekening-text .nama-rekening {
-    color: #ccc;
   }
 }
