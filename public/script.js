@@ -331,23 +331,18 @@ const animateOnScroll = () => {
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
 
-// --- Otomatisasi Nama Tamu Undangan dari URL ---
-// Fungsi untuk mengambil parameter 'to' di URL
-function getGuestNameFromURL() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get('to') || '[Nama Tamu Undangan]';
-}
-
-// Ganti isi [Nama Tamu Undangan] pada elemen dengan class 'guest-name'
 document.addEventListener('DOMContentLoaded', () => {
   const guestNameElement = document.querySelector('.guest-name');
   if (guestNameElement) {
-    // Ganti + menjadi spasi, dan decode karakter URL seperti %20
-    guestNameElement.textContent = decodeURIComponent(getGuestNameFromURL().replace(/\+/g, ' '));
+    const params = new URLSearchParams(window.location.search);
+    // Cek nama parameter yang dipakai
+    let guestName = params.get('to') || params.get('nama');
+    if (guestName && guestName.trim() !== "") {
+      guestName = decodeURIComponent(guestName.replace(/\+/g, ' '));
+      guestNameElement.textContent = guestName;
+    }
   }
 });
-
-
 
 
 
