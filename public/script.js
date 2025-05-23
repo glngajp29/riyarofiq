@@ -70,7 +70,7 @@ function openInvitation() {
 // =======================
 document.body.classList.add('noscroll');
 
-function smoothScrollTo(element, duration = 1000) {
+function smoothScrollTo(element, duration = 3000) {
   const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
   const startPosition = window.pageYOffset;
   const distance = targetPosition - startPosition;
@@ -108,7 +108,6 @@ openBtn.addEventListener('click', () => {
     openBtn.style.display = 'none';
   }, 1000);
 
-  smoothScrollTo(mainContent, 1000);
 });
 
 // =======================
