@@ -331,17 +331,21 @@ const animateOnScroll = () => {
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const guestNameElement = document.querySelector('.guest-name');
-    if (!guestNameElement) return;
+// --- Otomatisasi Nama Tamu Undangan dari URL ---
+// Fungsi untuk mengambil parameter 'to' di URL
+function getGuestNameFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('to') || '[Nama Tamu Undangan]';
+}
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const namaTamu = urlParams.get('nama');
-
-    if (namaTamu) {
-      guestNameElement.textContent = decodeURIComponent(namaTamu);
-    }
-  });
+// Ganti isi [Nama Tamu Undangan] pada elemen dengan class 'guest-name'
+document.addEventListener('DOMContentLoaded', () => {
+  const guestNameElement = document.querySelector('.guest-name');
+  if (guestNameElement) {
+    // Ganti + menjadi spasi, dan decode karakter URL seperti %20
+    guestNameElement.textContent = decodeURIComponent(getGuestNameFromURL().replace(/\+/g, ' '));
+  }
+});
 
 
 
