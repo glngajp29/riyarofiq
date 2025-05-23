@@ -318,17 +318,18 @@ const animateOnScroll = () => {
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
 
-window.addEventListener('DOMContentLoaded', () => {
-  const guestNameElement = document.querySelector('.guest-name');
-  if (!guestNameElement) return;
+  window.addEventListener('DOMContentLoaded', () => {
+    const guestNameElement = document.querySelector('.guest-name');
+    if (!guestNameElement) return;
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const namaTamu = urlParams.get('nama');
+    const urlParams = new URLSearchParams(window.location.search);
+    const namaTamu = urlParams.get('nama');
 
-  if (namaTamu) {
-    guestNameElement.textContent = decodeURIComponent(namaTamu);
-  }
-});
+    if (namaTamu) {
+      guestNameElement.textContent = decodeURIComponent(namaTamu);
+    }
+  });
+
 
 
 
