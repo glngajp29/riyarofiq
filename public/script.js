@@ -1,3 +1,15 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const guestNameElement = document.querySelector('.guest-name');
+  if (guestNameElement) {
+    const params = new URLSearchParams(window.location.search);
+    // Cek nama parameter yang dipakai
+    let guestName = params.get('to') || params.get('nama');
+    if (guestName && guestName.trim() !== "") {
+      guestName = decodeURIComponent(guestName.replace(/\+/g, ' '));
+      guestNameElement.textContent = guestName;
+    }
+  }
+});
 // =======================
 // 1. Countdown Timer
 // =======================
@@ -331,18 +343,7 @@ const animateOnScroll = () => {
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
 
-document.addEventListener('DOMContentLoaded', () => {
-  const guestNameElement = document.querySelector('.guest-name');
-  if (guestNameElement) {
-    const params = new URLSearchParams(window.location.search);
-    // Cek nama parameter yang dipakai
-    let guestName = params.get('to') || params.get('nama');
-    if (guestName && guestName.trim() !== "") {
-      guestName = decodeURIComponent(guestName.replace(/\+/g, ' '));
-      guestNameElement.textContent = guestName;
-    }
-  }
-});
+
 
 
 
