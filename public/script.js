@@ -91,7 +91,7 @@ function smoothScrollTo(element, duration = 3000) {
     return -c / 2 * (t * (t - 2) - 1) + b;
   }
 
-  requestAnimationFrame(animation);
+  requestAnimationFrame(animation); 
 }
 
 const openBtn = document.getElementById('openBtn');
