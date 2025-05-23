@@ -290,8 +290,7 @@ footer {
 /* Responsive Mobile */
 @media screen and (max-width: 768px) {
   .hero {
-    background-position:
-    background-size: 200%;
+  background-size: 200%;
   }
 
   .line-couple {
