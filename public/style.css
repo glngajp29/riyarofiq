@@ -1,4 +1,4 @@
-/* Reset & Dasar - Mobile First */
+/* Reset & Dasar - Samsung Galaxy A56 5G Optimized */
 * {
   margin: 0;
   padding: 0;
@@ -15,6 +15,9 @@ body {
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
+  /* A56 5G specific optimizations */
+  font-size: 16px;
+  min-height: 100vh;
 }
 
 @font-face {
@@ -42,15 +45,17 @@ body {
 }
 
 /* --------------------------------------------- */
-/* Hero Section - Mobile Optimized */
+/* Hero Section - A56 5G Portrait Optimized */
 .hero {
   height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for A56 5G */
   background: url('foto-cincin.jpg') center center / cover no-repeat;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-attachment: fixed;
 }
 
 .overlay {
@@ -64,36 +69,39 @@ body {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 0 20px;
+  padding: 0 24px;
   color: #fff;
   width: 100%;
+  max-width: 400px; /* Optimal for A56 5G width */
 }
 
 .line-wedding {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1rem, 4vw, 1.4rem);
+  font-size: 18px; /* Optimized for A56 5G */
   font-style: italic;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   opacity: 0.95;
+  letter-spacing: 0.5px;
 }
 
 .line-couple {
   font-family: 'Bird of Feather', cursive;
-  font-size: clamp(3rem, 12vw, 5rem);
-  margin: 30px 0;
+  font-size: 64px; /* Perfect size for A56 5G screen */
+  margin: 32px 0;
   line-height: 0.8;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .line-date {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1rem, 4vw, 1.4rem);
-  margin-top: 20px;
+  font-size: 18px;
+  margin-top: 24px;
   opacity: 0.95;
+  letter-spacing: 0.5px;
 }
 
 /* --------------------------------------------- */
-/* Invitation Overlay */
+/* Invitation Overlay - A56 5G Optimized */
 .invitation {
   position: absolute;
   inset: 0;
@@ -103,45 +111,48 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 40px 20px;
+  padding: 48px 24px;
   z-index: 10;
   color: #fff;
 }
 
 .invitation .line {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-  margin-bottom: 15px;
+  font-size: 16px;
+  margin-bottom: 16px;
   line-height: 1.6;
+  max-width: 350px;
 }
 
 .line-guest-title,
 .line-guest-name {
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-size: 20px;
   color: #ffd1dc;
 }
 
 .line-guest-name {
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
 }
 
 .line-place {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  font-size: 16px;
   color: #ffd1dc;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
+  max-width: 320px;
 }
 
 /* --------------------------------------------- */
-/* Mobile-First Buttons */
+/* A56 5G Optimized Buttons */
 .btn, .open-btn {
   font-family: 'Korcy', sans-serif;
-  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-  padding: 15px 30px;
+  font-size: 16px;
+  padding: 18px 36px;
   background: #9b6e6c;
   color: #fff;
-  border-radius: 25px;
+  border-radius: 28px;
   font-weight: bold;
   cursor: pointer;
   border: none;
@@ -149,8 +160,8 @@ body {
   text-align: center;
   display: inline-block;
   text-decoration: none;
-  min-height: 50px;
-  min-width: 150px;
+  min-height: 56px; /* A56 5G touch target */
+  min-width: 160px;
   touch-action: manipulation;
   box-shadow: 0 4px 15px rgba(155, 110, 108, 0.3);
   -webkit-tap-highlight-color: transparent;
@@ -164,33 +175,36 @@ body {
 }
 
 .open-btn {
-  margin-top: 30px;
-  font-size: clamp(1rem, 4vw, 1.2rem);
-  padding: 18px 35px;
+  margin-top: 32px;
+  font-size: 18px;
+  padding: 20px 40px;
+  min-height: 60px;
 }
 
 /* --------------------------------------------- */
-/* Sections - Mobile Layout */
+/* Sections - A56 5G Layout */
 .section {
-  padding: 60px 20px;
+  padding: 72px 24px;
   text-align: center;
   background: #fff;
   position: relative;
 }
 
 /* --------------------------------------------- */
-/* Countdown Section */
+/* Countdown Section - A56 5G Optimized */
 #countdown {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   background: url('foto-berdua.jpg') center center/cover no-repeat;
   color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 60px 20px;
+  padding: 72px 24px;
   text-align: center;
+  background-attachment: fixed;
 }
 
 #countdown::before {
@@ -208,8 +222,8 @@ body {
 
 #countdown h2 {
   font-family: 'Korcy', sans-serif;
-  font-size: clamp(1.5rem, 6vw, 2.5rem);
-  margin-bottom: 40px;
+  font-size: 32px; /* Optimized for A56 5G */
+  margin-bottom: 48px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
@@ -217,47 +231,51 @@ body {
   font-family: 'Korcy', sans-serif;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 16px;
   width: 100%;
-  max-width: 400px;
-  margin-top: 20px;
+  max-width: 360px; /* Perfect for A56 5G */
+  margin-top: 24px;
 }
 
 .time-box {
   text-align: center;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 20px 10px;
+  border-radius: 16px;
+  padding: 20px 12px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  min-height: 80px;
 }
 
 .time-box .number {
-  font-size: clamp(2rem, 8vw, 3rem);
+  font-size: 28px; /* Optimized for A56 5G readability */
   font-weight: 600;
   display: block;
   line-height: 1;
 }
 
 .time-box .label {
-  font-size: clamp(0.7rem, 3vw, 0.9rem);
+  font-size: 12px;
   font-weight: 300;
-  margin-top: 5px;
+  margin-top: 6px;
   opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* --------------------------------------------- */
-/* Quote Section */
+/* Quote Section - A56 5G Optimized */
 .quote-section {
   position: relative;
   background: url('bg-quotes.jpg') center center / cover no-repeat;
-  min-height: 70vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 80px 30px;
+  padding: 96px 32px;
   color: #fff;
+  background-attachment: fixed;
 }
 
 .quote-overlay {
@@ -270,44 +288,47 @@ body {
 .quote-content {
   position: relative;
   z-index: 2;
-  max-width: 90%;
+  max-width: 340px; /* Optimized for A56 5G */
 }
 
 .quote-content blockquote {
-  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  font-size: 20px; /* Perfect readability for A56 5G */
   font-style: italic;
   line-height: 1.5;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .quote-author {
-  font-size: clamp(1rem, 4vw, 1.3rem);
+  font-size: 16px;
   font-weight: 300;
   opacity: 0.9;
 }
 
 /* --------------------------------------------- */
-/* Couple Section */
+/* Couple Section - A56 5G Optimized */
 .couple-section {
-  padding: 80px 20px;
+  padding: 96px 24px;
   background: #fff0f5;
   text-align: center;
 }
 
 .section-intro {
-  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  font-size: 16px;
   color: #444;
-  margin-bottom: 60px;
+  margin-bottom: 72px;
   line-height: 1.6;
-  padding: 0 10px;
+  padding: 0 16px;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .couple-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 80px;
+  gap: 96px;
   max-width: 100%;
 }
 
@@ -315,13 +336,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 32px;
   width: 100%;
 }
 
 .couple-photo {
-  width: clamp(200px, 60vw, 300px);
-  height: clamp(240px, 72vw, 360px);
+  width: 240px; /* Optimized for A56 5G screen */
+  height: 288px;
   border-radius: 50% 50% 0 0;
   object-fit: cover;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -330,23 +351,25 @@ body {
 
 .fancy-font {
   font-family: 'Bird of Feather', cursive;
-  font-size: clamp(3rem, 10vw, 5rem);
-  margin: 20px 0 10px;
+  font-size: 56px; /* Perfect size for A56 5G */
+  margin: 24px 0 12px;
   line-height: 0.9;
 }
 
 .couple-name {
   font-family: 'Korcy', cursive;
-  font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
 }
 
 .couple-parent {
-  font-size: clamp(0.8rem, 3.2vw, 1rem);
+  font-size: 14px;
   color: #666;
-  padding: 0 20px;
+  padding: 0 24px;
   line-height: 1.4;
+  max-width: 300px;
 }
 
 .bride .fancy-font,
@@ -360,61 +383,63 @@ body {
 }
 
 /* --------------------------------------------- */
-/* Event Information */
+/* Event Information - A56 5G Optimized */
 .seamless-section {
   background: #9b6e6c;
-  padding: 60px 20px;
+  padding: 72px 24px;
   margin: 0;
   color: #fff;
 }
 
 .acara-bg {
   background: #fff0f5;
-  border-radius: 20px;
+  border-radius: 24px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  padding: 40px 25px;
+  padding: 48px 28px;
   color: #333;
+  max-width: 380px;
+  margin: 0 auto;
 }
 
 .judul-acara-1,
 .judul-acara-2 {
   font-family: 'Korcy', sans-serif;
-  font-size: clamp(1.3rem, 5vw, 1.8rem);
+  font-size: 22px; /* Optimized for A56 5G */
   color: #9b6e6c;
-  margin: 20px 0;
+  margin: 24px 0;
 }
 
 .info-acara {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  font-size: 16px;
   color: #444;
-  margin: 8px 0;
+  margin: 10px 0;
   line-height: 1.5;
 }
 
 .alamat-title {
   font-family: 'Korcy', sans-serif;
-  font-size: clamp(1rem, 4vw, 1.3rem);
+  font-size: 18px;
   color: #9b6e6c;
-  margin: 30px 0 10px;
+  margin: 32px 0 12px;
 }
 
 .alamat-acara {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  font-size: 16px;
   color: #444;
   font-weight: 300;
   line-height: 1.5;
 }
 
-/* Mobile Button Layouts */
+/* A56 5G Button Layouts */
 .button-wrapper,
 .button-wrapper-justify,
 .button-wrapper-inline {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-top: 40px;
+  gap: 16px;
+  margin-top: 48px;
   width: 100%;
 }
 
@@ -423,37 +448,37 @@ body {
 .button-wrapper-inline .btn {
   width: 100%;
   margin: 0;
-  padding: 15px 20px;
-  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  padding: 18px 24px;
+  font-size: 16px;
+  min-height: 56px;
 }
 
-/* Two buttons side by side on larger mobile */
-@media screen and (min-width: 400px) {
-  .button-wrapper-inline {
-    flex-direction: row;
-    gap: 15px;
-  }
-  
-  .button-wrapper-inline .btn {
-    flex: 1;
-  }
+/* Two buttons side by side - A56 5G optimized */
+.button-wrapper-inline {
+  flex-direction: row;
+  gap: 16px;
+}
+
+.button-wrapper-inline .btn {
+  flex: 1;
+  min-width: 0;
 }
 
 /* --------------------------------------------- */
-/* Gallery - Mobile Grid */
+/* Gallery - A56 5G Grid */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  margin-top: 30px;
-  padding: 0 10px;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for A56 5G */
+  gap: 12px;
+  margin-top: 32px;
+  padding: 0 12px;
 }
 
 .gallery img {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 16px;
   cursor: pointer;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -463,14 +488,14 @@ body {
   transform: scale(0.95);
 }
 
-/* Modal for Mobile */
+/* Modal for A56 5G */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.9);
   z-index: 1000;
-  padding: 20px;
+  padding: 24px;
   touch-action: manipulation;
 }
 
@@ -478,72 +503,77 @@ body {
   display: block;
   margin: auto;
   max-width: 95%;
-  max-height: 90vh;
-  border-radius: 10px;
+  max-height: 85vh;
+  border-radius: 12px;
   object-fit: contain;
 }
 
 .close {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  font-size: 40px;
+  top: 32px;
+  right: 32px;
+  font-size: 32px;
   font-weight: bold;
   color: #fff;
   cursor: pointer;
   z-index: 1001;
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   border-radius: 50%;
   touch-action: manipulation;
 }
 
 /* --------------------------------------------- */
-/* RSVP Section */
+/* RSVP Section - A56 5G Optimized */
 .rsvp-section {
-  padding: 60px 20px;
+  padding: 72px 24px;
   background: #f9f9f9;
 }
 
 .rsvp-title {
   font-family: 'Korcy', cursive;
-  font-size: clamp(1.8rem, 7vw, 2.5rem);
+  font-size: 32px; /* Perfect for A56 5G */
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   color: #333;
 }
 
 .rsvp-subtitle {
   text-align: center;
-  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-  margin-bottom: 40px;
+  font-size: 16px;
+  margin-bottom: 48px;
   color: #555;
   line-height: 1.5;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .rsvp-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
 }
 
 .rsvp-form input,
 .rsvp-form textarea,
 .rsvp-form select {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1rem, 4vw, 1.2rem);
-  padding: 15px;
-  border-radius: 10px;
+  font-size: 16px;
+  padding: 18px;
+  border-radius: 12px;
   border: 2px solid #ddd;
   background: #fff;
   resize: vertical;
   -webkit-appearance: none;
   appearance: none;
+  min-height: 56px; /* A56 5G touch target */
 }
 
 .rsvp-form input:focus,
@@ -560,13 +590,13 @@ body {
   font-family: 'Korcy', sans-serif;
   font-weight: bold;
   border: none;
-  border-radius: 25px;
-  padding: 18px 30px;
+  border-radius: 28px;
+  padding: 20px 32px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 20px;
-  font-size: clamp(1rem, 4vw, 1.2rem);
-  min-height: 55px;
+  margin-top: 24px;
+  font-size: 16px;
+  min-height: 60px;
   touch-action: manipulation;
   box-shadow: 0 4px 15px rgba(155, 110, 108, 0.3);
 }
@@ -576,20 +606,20 @@ body {
   transform: translateY(1px);
 }
 
-/* Comment Display */
+/* Comment Display - A56 5G Optimized */
 .comment-wrapper {
   max-height: 400px;
   overflow-y: auto;
-  border-radius: 15px;
+  border-radius: 16px;
   border: 1px solid #ddd;
-  margin-top: 30px;
+  margin-top: 32px;
   background: #fff;
   -webkit-overflow-scrolling: touch;
 }
 
 .comment-card {
   border-bottom: 1px solid #eee;
-  padding: 20px;
+  padding: 24px;
   background: #fff;
 }
 
@@ -598,7 +628,7 @@ body {
 }
 
 .comment-name {
-  font-size: clamp(1rem, 4vw, 1.2rem);
+  font-size: 16px;
   font-weight: 600;
   color: #333;
   margin-bottom: 8px;
@@ -606,13 +636,13 @@ body {
 
 .comment-name .attendance {
   font-style: italic;
-  font-size: clamp(0.8rem, 3vw, 0.9rem);
+  font-size: 14px;
   color: #666;
-  margin-left: 5px;
+  margin-left: 6px;
 }
 
 .comment-message {
-  font-size: clamp(0.9rem, 3.5vw, 1rem);
+  font-size: 15px;
   color: #444;
   line-height: 1.5;
   margin-bottom: 8px;
@@ -621,45 +651,48 @@ body {
 }
 
 .comment-time {
-  font-size: clamp(0.7rem, 3vw, 0.8rem);
+  font-size: 12px;
   color: #999;
 }
 
 /* --------------------------------------------- */
-/* Gift Section */
+/* Gift Section - A56 5G Optimized */
 .gift-section {
   background: #fefefe;
-  padding: 60px 20px;
+  padding: 72px 24px;
   text-align: center;
   border-top: 1px solid #eee;
 }
 
 .gift-title {
   font-family: 'Korcy', cursive;
-  font-size: clamp(1.8rem, 7vw, 2.5rem);
-  margin-bottom: 15px;
+  font-size: 32px;
+  margin-bottom: 16px;
   color: #333;
 }
 
 .gift-description {
-  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  font-size: 16px;
   color: #555;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
   line-height: 1.5;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gift-btn {
   background: #9b6e6c;
   font-family: "Korcy", sans-serif;
   color: white;
-  font-size: clamp(1rem, 4vw, 1.2rem);
-  padding: 18px 30px;
-  border-radius: 25px;
+  font-size: 16px;
+  padding: 20px 32px;
+  border-radius: 28px;
   cursor: pointer;
   border: none;
   font-weight: bold;
   transition: all 0.3s ease;
-  min-height: 55px;
+  min-height: 60px;
   touch-action: manipulation;
   box-shadow: 0 4px 15px rgba(155, 110, 108, 0.3);
 }
@@ -671,37 +704,39 @@ body {
 
 .gift-details {
   display: none;
-  margin-top: 30px;
+  margin-top: 32px;
   position: relative;
-  max-width: 100%;
+  max-width: 360px; /* Optimized for A56 5G */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gift-img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 15px;
+  border-radius: 16px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 .mandiri-logo {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  width: clamp(40px, 12vw, 60px);
+  top: 16px;
+  right: 16px;
+  width: 48px; /* Optimized for A56 5G */
   height: auto;
   background: rgba(255,255,255,0.9);
-  padding: 5px;
+  padding: 6px;
   border-radius: 8px;
 }
 
 .atm-overlay {
   position: absolute;
-  bottom: 20px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255,255,255,0.95);
-  padding: 15px 20px;
+  padding: 18px 24px;
   border-radius: 12px;
   text-align: center;
   backdrop-filter: blur(10px);
@@ -710,32 +745,33 @@ body {
 
 .rekening-text {
   font-family: 'Conthrax', monospace;
-  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  font-size: 20px; /* Optimized for A56 5G */
   font-weight: bold;
   color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .rekening-text .nama-rekening {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(0.8rem, 3vw, 1rem);
+  font-size: 14px;
   font-weight: normal;
   color: #555;
   display: block;
-  margin-top: 5px;
+  margin-top: 6px;
 }
 
 .copy-btn {
-  margin-top: 15px;
+  margin-top: 16px;
   background: #383838;
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: clamp(0.8rem, 3vw, 1rem);
+  padding: 12px 24px;
+  font-size: 14px;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s;
   touch-action: manipulation;
+  min-height: 44px;
 }
 
 .copy-btn:active {
@@ -744,41 +780,44 @@ body {
 }
 
 .gift-note {
-  font-size: clamp(0.8rem, 3vw, 1rem);
+  font-size: 14px;
   font-style: italic;
   color: #777;
-  margin-top: 20px;
+  margin-top: 24px;
   line-height: 1.4;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* --------------------------------------------- */
-/* Footer */
+/* Footer - A56 5G Optimized */
 footer {
-  padding: 40px 20px;
+  padding: 48px 24px;
   text-align: center;
   background: #f8f8f8;
   color: #888;
-  font-size: clamp(0.8rem, 3vw, 1rem);
+  font-size: 14px;
 }
 
 /* --------------------------------------------- */
-/* Toast Notification */
+/* Toast Notification - A56 5G */
 .toast {
   visibility: hidden;
   background: rgba(0,0,0,0.8);
   color: white;
   text-align: center;
   border-radius: 12px;
-  padding: 15px 20px;
+  padding: 16px 24px;
   position: fixed;
-  bottom: 30px;
+  bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: clamp(0.9rem, 3.5vw, 1rem);
+  font-size: 14px;
   z-index: 1000;
   opacity: 0;
   transition: all 0.3s ease;
-  max-width: 90%;
+  max-width: 320px;
 }
 
 .toast.show {
@@ -790,6 +829,7 @@ footer {
 /* Utility Classes */
 .noscroll {
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -812,12 +852,12 @@ footer {
   transform: translateY(0);
 }
 
-/* Segment Dividers */
+/* Segment Dividers - A56 5G */
 .segment-divider-top,
 .segment-divider-bot {
   height: 2px;
   background: #9b6e6c;
-  margin: 20px 30px;
+  margin: 24px 32px;
   border-radius: 2px;
 }
 
@@ -857,7 +897,27 @@ footer {
 }
 
 /* --------------------------------------------- */
-/* Performance Optimizations */
+/* Samsung Galaxy A56 5G Specific Optimizations */
+
+/* High DPI display optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero-content,
+  .invitation,
+  #countdown,
+  .quote-content {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Samsung Internet Browser specific */
+@supports (-webkit-appearance: none) {
+  .btn, .open-btn, .submit-btn, .gift-btn {
+    -webkit-appearance: none;
+  }
+}
+
+/* Performance optimizations for A56 5G */
 .hero,
 #countdown,
 .quote-section {
@@ -865,18 +925,51 @@ footer {
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  contain: layout style paint;
 }
 
-/* Smooth scrolling for iOS */
+/* Touch optimization for Samsung devices */
 * {
   -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(155, 110, 108, 0.2);
 }
 
-/* Prevent zoom on input focus */
+/* Prevent zoom on input focus - A56 5G specific */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 textarea,
 select {
   font-size: 16px !important;
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+
+/* Safe area adjustments for A56 5G notch/camera */
+@supports (padding: max(0px)) {
+  .hero-content,
+  .invitation {
+    padding-top: max(48px, env(safe-area-inset-top) + 24px);
+    padding-bottom: max(48px, env(safe-area-inset-bottom) + 24px);
+  }
+  
+  .toast {
+    bottom: max(32px, env(safe-area-inset-bottom) + 16px);
+  }
+}
+
+/* Samsung One UI dark mode support */
+@media (prefers-color-scheme: dark) {
+  .gift-details .atm-overlay {
+    background: rgba(40, 40, 40, 0.95);
+    color: #fff;
+  }
+  
+  .rekening-text {
+    color: #fff;
+  }
+  
+  .rekening-text .nama-rekening {
+    color: #ccc;
+  }
 }
