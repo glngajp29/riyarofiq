@@ -265,6 +265,9 @@ if (querySnapshot.empty) {
   commentSection.innerHTML = "<p>Belum ada ucapan. Jadilah yang pertama!</p>";
 }
 
+localStorage.setItem("guestName", name);
+const savedName = localStorage.getItem("guestName");
+if (savedName) document.getElementById("guest-name").value = savedName;
 
 loadComments();
 
