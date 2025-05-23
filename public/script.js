@@ -1,275 +1,176 @@
-// =======================
-// 1. Countdown Timer
-// =======================
-const targetDate = new Date("31 May 2025 09:00:00").getTime();
-const timerElement = document.getElementById("timer");
-
-setInterval(() => {
-  const now = Date.now();
-  let distance = targetDate - now;
-  if (distance < 0) distance = 0;
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hrs = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const min = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const sec = Math.floor((distance % (1000 * 60)) / 1000);
-
-  timerElement.innerHTML = `
-    <div class="time-box">
-      <div class="number">${String(days).padStart(2, '0')}</div>
-      <div class="label">Hari</div>
-    </div>
-    <div class="time-box">
-      <div class="number">${String(hrs).padStart(2, '0')}</div>
-      <div class="label">Jam</div>
-    </div>
-    <div class="time-box">
-      <div class="number">${String(min).padStart(2, '0')}</div>
-      <div class="label">Menit</div>
-    </div>
-    <div class="time-box">
-      <div class="number">${String(sec).padStart(2, '0')}</div>
-      <div class="label">Detik</div>
-    </div>
-  `;
-}, 1000);
-
-// =======================
-// 2. Modal Galeri Foto
-// =======================
-export function openModal(img) {
-  const modal = document.getElementById("imgModal");
-  const modalImg = document.getElementById("modalImg");
-  if (modal && modalImg) {
-    modal.style.display = "block";
-    modalImg.src = img.src;
-  }
-}
-
-export function closeModal() {
-  const modal = document.getElementById("imgModal");
-  if (modal) modal.style.display = "none";
-}
-
-// =======================
-// 3. Efek Fade Out & Buka Undangan
-// =======================
-function openInvitation() {
-  const hero = document.getElementById("hero");
-  const mainContent = document.getElementById("main-content");
-
-  if (!hero || !mainContent) return;
-
-  hero.classList.add("fade-out");
-  setTimeout(() => {
-    hero.style.display = "none";
-    mainContent.style.display = "block";
-  }, 1000);
-}
-
-// =======================
-// 4. Scroll Control dan Event Listener Tombol Buka Undangan
-// =======================
-document.body.classList.add('noscroll');
-
-function smoothScrollTo(element, duration = 1000) {
-  const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
-  const startPosition = window.pageYOffset;
-  const distance = targetPosition - startPosition;
-  let startTime = null;
-
-  function animation(currentTime) {
-    if (!startTime) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
-    const run = ease(timeElapsed, startPosition, distance, duration);
-    window.scrollTo(0, run);
-    if (timeElapsed < duration) requestAnimationFrame(animation);
-  }
-
-  function ease(t, b, c, d) {
-    t /= d / 2;
-    if (t < 1) return (c / 2) * t * t + b;
-    t--;
-    return (-c / 2) * (t * (t - 2) - 1) + b;
-  }
-
-  requestAnimationFrame(animation);
-}
-
-const openBtn = document.getElementById('openBtn');
-openBtn?.addEventListener('click', () => {
-  const mainContent = document.getElementById('main-content');
-  if (!mainContent) return;
-
-  mainContent.style.display = 'block';
-  document.body.classList.remove('noscroll');
-  mainContent.scrollIntoView({ behavior: 'smooth' });
-
-  openBtn.classList.add('hide');
-  setTimeout(() => {
-    openBtn.style.display = 'none';
-  }, 1000);
-
-  smoothScrollTo(mainContent, 1000);
-
-  // Putar musik saat buka undangan
-  bgMusic.play().catch(() => {
-    console.log("Autoplay ditolak, musik akan mulai setelah interaksi berikutnya.");
-  });
-});
-
-// =======================
-// 5. Efek Parallax dan Blur Background Hero Saat Scroll
-// =======================
-(() => {
-  const hero = document.querySelector('.hero');
-  if (!hero) return;
-
-  let baseOffset = 0,
-      currentOffset = baseOffset,
-      targetOffset = baseOffset,
-      maxBlur = 5,
-      currentBlur = 0,
-      targetBlur = 0,
-      ticking = false;
-
-  function lerp(start, end, t) {
-    return start + (end - start) * t;
-  }
-
-  function onScroll() {
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    targetOffset = baseOffset - scrollY * 0.08;
-    targetOffset = Math.min(baseOffset, Math.max(targetOffset, baseOffset - 100));
-    targetBlur = maxBlur * Math.min(scrollY / 2300, 1);
-
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(update);
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Rofiq dan Riya</title>
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Penting: Tambahkan ini untuk memastikan script modules berjalan dengan benar -->
+  <script>
+    // Fix untuk beberapa browser lama yang tidak mendukung ES modules
+    if (!'noModule' in HTMLScriptElement.prototype) {
+      alert('Browser Anda mungkin tidak mendukung fitur terbaru website ini. Mohon gunakan browser terbaru seperti Chrome, Firefox, atau Edge.');
     }
-  }
+  </script>
+</head>
+<body>
 
-  function update() {
-    currentOffset = lerp(currentOffset, targetOffset, 0.1);
-    currentBlur = lerp(currentBlur, targetBlur, 0.1);
+  <!-- Hero / Halaman Pembuka Undangan -->
+  <div class="fade-top"></div>
+  
+  <div class="hero" id="hero">
+    <div class="overlay"></div>
+    <div class="hero-content" id="heroContent">
+      <div class="line line-wedding" data-animate>The Wedding of</div>
+      <div class="line line-couple" data-animate>Rofiq & Riya</div>
+      <div class="line line-date" data-animate>Sabtu, 31 Juni 2025</div>
 
-    hero.style.backgroundPositionY = `${currentOffset.toFixed(2)}px`;
-    hero.style.filter = `blur(${currentBlur.toFixed(2)}px)`;
+      <div class="invitation">
+        <div class="line line-title" data-animate>Kepada Yth.</div>
+        <div class="line line-guest-title" data-animate>Bapak/Ibu/Saudara/i:</div>
+        <div class="line line-guest-name guest-name" id="guestName" data-animate>[Nama Tamu Undangan]</div>
+        <div class="line line-place" data-animate>Di tempat.</div>
+      </div>
+      
+      <audio id="backgroundMusic" src="lesung-pipi.mp3" loop></audio>
+      <button class="btn open-btn" id="openBtn" data-animate>Buka Undangan</button>
+    </div>
+  </div>
 
-    if (Math.abs(currentOffset - targetOffset) > 0.2 || Math.abs(currentBlur - targetBlur) > 0.1) {
-      requestAnimationFrame(update);
-    } else {
-      ticking = false;
-    }
-  }
+  <div class="fade-bottom"></div>
 
-  document.addEventListener('scroll', onScroll);
-})();
+  <!-- Main Content: Isi Undangan (disembunyikan dulu) -->
+  <main id="main-content" style="display: none;">
 
-// =======================
-// 6. Intersection Observer untuk Animasi Elemen Saat Muncul di Viewport
-// =======================
-const animateEls = document.querySelectorAll('[data-animate]');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    } else {
-      entry.target.classList.remove('visible');
-    }
-  });
-}, { threshold: 0.1 });
+    <!-- Bagian Countdown Menuju Hari H -->
+    <section id="countdown" class="section">
+      <h2 data-animate>MENUJU HARI BAHAGIA</h2>
+      <h2 data-animate>ROFIQ & RIYA</h2>
+      <div id="timer" data-animate>Memuat...</div>
+    </section>
 
-animateEls.forEach(el => observer.observe(el));
+    <!-- Segmen Quotes -->
+    <section class="quote-section" id="quote">
+      <div class="quote-overlay"></div>
+      <div class="quote-content" data-animate>
+        <blockquote>
+          "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+        </blockquote>
+        <p class="quote-author">(QS. Ar-Rum: 21)</p>
+      </div>
+    </section>
 
-// =======================
-// 7. Firebase: Inisialisasi dan Setup Firestore
-// =======================
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    <section class="couple-section">
+      <div class="section-intro">
+        <p>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan kami:</p>
+      </div>
 
-const firebaseConfig = {
-  apiKey: "AIzaSyD_pcQQfzF_0khbjwpG_IxTqpdVrXysWSc",
-  authDomain: "rayarofiqwedding.firebaseapp.com",
-  projectId: "rayarofiqwedding",
-  storageBucket: "rayarofiqwedding.appspot.com",
-  messagingSenderId: "168418586866",
-  appId: "1:168418586866:web:632af302bd422bdbd8e06b",
-  measurementId: "G-WBTPMHRG1C"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// =======================
-// 8. Form RSVP: Submit & Load Comments
-// =======================
-const form = document.getElementById("rsvp-form");
-const commentSection = document.getElementById("comment-section");
-
-form?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const name = document.getElementById("guest-name")?.value.trim();
-  const message = document.getElementById("guest-message")?.value.trim();
-  const attendance = document.getElementById("guest-attendance")?.value;
-
-  if (!name || !message || !attendance) {
-    alert("Mohon isi semua kolom RSVP dengan benar.");
-    return;
-  }
-
-  try {
-    await addDoc(collection(db, "comments"), {
-      name,
-      message,
-      attendance,
-      timestamp: serverTimestamp()
-    });
-    form.reset();
-    await loadComments();
-  } catch (error) {
-    console.error("Gagal mengirim komentar:", error);
-  }
-});
-
-async function loadComments() {
-  if (!commentSection) return;
-  commentSection.innerHTML = "Memuat komentar...";
-
-  const q = query(collection(db, "comments"), orderBy("timestamp", "desc"));
-
-  try {
-    const querySnapshot = await getDocs(q);
-    commentSection.innerHTML = "";
-    querySnapshot.forEach(doc => {
-      const data = doc.data();
-      const time = data.timestamp ? new Date(data.timestamp.seconds * 1000) : new Date();
-      const formattedTime = time.toLocaleString('id-ID');
-
-      const div = document.createElement("div");
-      div.classList.add("comment-card");
-      div.innerHTML = `
-        <div class="comment-name">
-          <strong>${data.name}</strong> <span class="attendance">(${data.attendance})</span>
+      <div class="couple-container">
+        <!-- Mempelai Wanita -->
+        <div class="couple-box bride">
+          <h3 class="fancy-font">Riya</h3>
+          <p class="couple-name">Siti Nur Mariana</p>
+          <p class="couple-parent">Putri dari Bapak Hambali & Ibu Minarti</p>
         </div>
-        <div class="comment-message">${data.message}</div>
-        <div class="comment-time">🕒 ${formattedTime}</div>
-      `;
-      commentSection.appendChild(div);
-    });
-  } catch (error) {
-    commentSection.innerHTML = "Gagal memuat komentar.";
-    console.error("Error memuat komentar:", error);
-  }
-}
 
-// Load comments saat awal halaman dibuka
-loadComments();
+        <!-- Mempelai Pria -->
+        <div class="couple-box groom">
+          <h3 class="fancy-font">Rofiq</h3>
+          <p class="couple-name">ABD Rofiq</p>
+          <p class="couple-parent">Putra dari Bapak (Alm.) Makki & Ibu Sumayyah</p>
+        </div>
+      </div>
+    </section>
 
-// =======================
-// 9. Toggle dan Salin Info Rekening Hadiah
-// =======================
-const toggleGiftBtn = document.getElementById("toggleGiftBtn");
-const giftDetails = document.getElementById("giftDetails");
-const copyBtn = document.getElementBy
+    <section id="acara" class="section seamless-section acara-detail">
+      <div class="acara-box full acara-bg">
+        <!-- Akad -->
+        <h3 class="judul-acara-1 highlight">Akad</h3>
+        <p class="info-acara">Sabtu, 31 Oktober 2025</p>
+        <p class="info-acara">Pukul 08.00 WIB</p>
+
+        <!-- Resepsi -->
+        <h3 class="judul-acara-2 highlight">Resepsi</h3>
+        <p class="info-acara">Sabtu, 31 Oktober 2025</p>
+        <p class="info-acara">Pukul 11.00 WIB - Selesai</p>
+
+        <!-- Lokasi -->
+        <h3 class="alamat-title highlight">Alamat</h3>
+        <p class="alamat-acara">Tambelangan, Sampang, Jawa Timur</p>
+
+        <!-- Tombol -->
+        <div class="button-wrapper-justify">
+          <a href="https://www.google.com/maps?q=-7.059445,113.1650267" class="btn" target="_blank" rel="noopener noreferrer">Lihat Lokasi</a>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Akad+dan+Resepsi+Rofiq+%26+Riya&dates=20251031T010000Z/20251031T050000Z&details=Lokasi:+Tambelangan,+Sampang,+Jawa+Timur&location=Tambelangan,+Sampang,+Jawa+Timur" class="btn" target="_blank" rel="noopener noreferrer">Simpan ke Kalender</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="rsvp-section">
+      <h2 class="rsvp-title">RSVP</h2>
+      <p class="rsvp-subtitle">
+        *Diharapkan Kepada Tamu Undangan Untuk Mengisi Form Kehadiran Dibawah Ini
+      </p>
+
+      <form id="rsvp-form" class="rsvp-form">
+        <input type="text" id="guest-name" placeholder="Nama" required />
+        <textarea id="guest-message" placeholder="Berikan ucapan & doa" rows="4" required></textarea>
+        <select id="guest-attendance" required>
+          <option value="" disabled selected>Konfirmasi Kehadiran</option>
+          <option value="Hadir">Hadir</option>
+          <option value="Tidak Hadir">Tidak Hadir</option>
+          <option value="Masih Ragu">Masih Ragu</option>
+        </select>
+        <button type="submit" class="submit-btn">Berikan Ucapan</button>
+      </form>
+
+      <div class="segment-divider-top"></div>
+
+      <div class="rsvp-comments-container">
+        <div class="comment-wrapper">
+          <div id="comment-section">
+            <!-- komentar akan dimuat dari Firebase -->
+          </div>
+        </div>
+        <div class="segment-divider-bot"></div>
+      </div>
+    </section>
+
+    <section class="gift-section">
+      <div class="gift-container">
+        <h2 class="gift-title">Wedding Love Gift</h2>
+        <p class="gift-description">
+          Apabila tamu ingin mengirimkan hadiah kepada kedua mempelai dapat melalui virtual account </p>
+        <button class="gift-btn" id="toggleGiftBtn">Kirim Hadiah</button>
+
+        <div class="gift-details" id="giftDetails">
+          <div class="gift-image-wrapper">
+            <img src="atm.png" alt="ATM Info" class="gift-img" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/2560px-Bank_Mandiri_logo_2016.svg.png" alt="Bank Mandiri" class="mandiri-logo" />
+          </div>
+
+          <div class="atm-overlay">
+            <p class="rekening-text" id="rekening-number">
+              1234567890<br />
+              <span class="nama-rekening">a.n. Nama Mempelai</span>
+            </p>
+            <button class="copy-btn" id="copyBtn">Copy Rekening</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Terima kasih atas doa dan restunya 🙏</p>
+    </footer>
+
+  </main>
+
+  <div id="toast" class="toast">Berhasil disalin!</div>
+
+  <!-- PENTING: Gunakan type="module" agar import Firebase bekerja -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
