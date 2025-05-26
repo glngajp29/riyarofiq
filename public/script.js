@@ -191,13 +191,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCX1_3YA9L1xx1AHQsUXGZ4x7p_U0_Pczc",
-  authDomain: "undangan-rofiq.firebaseapp.com",
-  projectId: "undangan-rofiq",
-  storageBucket: "undangan-rofiq.firebasestorage.app",
-  messagingSenderId: "647019327634",
-  appId: "1:647019327634:web:76dca38c2bbe91e82f764b",
-  measurementId: "G-25GHYB1YPQ"
+  apiKey: "AIzaSyD_pcQQfzF_0khbjwpG_IxTqpdVrXysWSc",
+  authDomain: "rayarofiqwedding.firebaseapp.com",
+  projectId: "rayarofiqwedding",
+  storageBucket: "rayarofiqwedding.firebasestorage.app",
+  messagingSenderId: "168418586866",
+  appId: "1:168418586866:web:632af302bd422bdbd8e06b",
+  measurementId: "G-WBTPMHRG1C"
 
 };
 
